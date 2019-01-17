@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=S, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Psychic Game</title>
+    <script src=""></script>
+</head>
+<body>
+    <div>
+        <span><h1>Psychic Game</h1> <p id="GuessingGame"></p></span>
+        <span><h2>pick a letter from a-z</h2></span>
+        <span>User Guesses: <p id="UserGusses"></p></span>
+        <span>Computer Guesses:</span><p id="computerGuess"></p></span>
+         <span><p id="wins"></p></span>
+        <span><p id="losses"></p></span>
+        <span>AmountLeft:<p id="AmountLeft"></p></span>
+        
+    </div>
+
+        <script>
+// Creates an array that list all options (a-z)
+        var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
+// variables to hold wins or losses or correct answer
+        var wins = 0;
+        var losses = 0;
+        var guesses = 10;
+// Create variables that hold refrences to place in html using document.getElementById
+
+    var UserGussesText= document.getElementById("UserGusses");
+    var computerGuessText = document.getElementById("computerGuess");
+    var winsText = document.getElementById("wins");
+    var lossesText = document.getElementById("losses");
+   var AmountLeftText = document.getElementById("AmountLeft")
+   
+
+    document.onkeyup = function(event) {
+            var UserGusses = event.key;
+
+    
+// randomaly chooses from options in array Computer Guess
+        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+        
+    
+// this function is when ever a user press a key.
+         
+if (UserGusses === computerGuess) {
+    wins++;
+}
+if (UserGusses !== computerGuess) {
+    losses++; 
+}    
+if (UserGusses !== computerGuess){
+    guesses--;
+}    
+
+// display user and computer wins/losses
+        UserGussesText.textContent = "" + UserGusses;
+        computerGuessText.textContent = "" + computerGuess;
+        winsText.textContent = "wins" + wins;
+        lossesText.textContent = "losses" + losses;
+        AmountLeftText.textContent = "AmountLeft" + guesses;
+
+      
+    }; 
+
+        </script>
+</body>
+</html>
